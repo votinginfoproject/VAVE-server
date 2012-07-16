@@ -10,22 +10,6 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-if "GONDOR_DATABASE_URL" in os.environ:
-    urlparse.uses_netloc.append("postgres")
-    url = urlparse.urlparse(os.environ["GONDOR_DATABASE_URL"])
-    DATABASES = {
-        "default": {
-            "ENGINE": {
-                "postgres": "django.db.backends.postgresql_psycopg2"
-            }[url.scheme],
-            "NAME": url.path[1:],
-            "USER": url.username,
-            "PASSWORD": url.password,
-            "HOST": url.hostname,
-            "PORT": url.port
-        }
-    }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -89,8 +73,6 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(os.path.dirname(__file__), 'pre_static'),
 )
-
-FILE_UPLOAD_PERMISSIONS = 0640
 
 # List of finder classes that know how to find static files in
 # various locations.
