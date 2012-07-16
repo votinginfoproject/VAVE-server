@@ -33,7 +33,10 @@ wsgi:
     entry_point: server.wsgi:application
     
     # Options for gunicorn which runs your WSGI project.
-    gunicorn:
+#    gunicorn:
         # The worker class used to run gunicorn (possible values include:
         # sync, eventlet and gevent)
-        worker_class: sync
+#        worker_class: sync
+
+django:
+    managepy: manage.py
